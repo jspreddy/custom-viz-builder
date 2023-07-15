@@ -42,8 +42,8 @@ const Visualization = ({ data, query, deps, jsCode, reload }: Viz) => {
     <html>
       <head>
           ${deps
-            .map((dep: any) => `<script src="${escapeHtml(dep)}"></script>`)
-            .join('')}
+        .map((dep: any) => `<script src="${escapeHtml(dep)}"></script>`)
+        .join('')}
 
           <style type="text/css">
                   html, body, #vis {
