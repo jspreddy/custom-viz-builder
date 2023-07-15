@@ -142,17 +142,17 @@ const App = () => {
           <div
             style={{ padding: '5px' }}
             ref={editorQueryRes}
-            hidden={1 === tabIndex || 2 === tabIndex}
+            hidden={!isTabIndex(tabIndex, 0)}
           />
           <div
             style={{ padding: '5px' }}
             ref={editorData}
-            hidden={0 === tabIndex || 2 === tabIndex}
+            hidden={!isTabIndex(tabIndex, 1)}
           />
           <div
             style={{ padding: '5px' }}
             ref={editorDeps}
-            hidden={0 === tabIndex || 1 === tabIndex}
+            hidden={!isTabIndex(tabIndex, 3)}
           />
 
           <Typography
@@ -177,6 +177,10 @@ const App = () => {
   )
 
   /** Helper functions */
+
+  function isTabIndex(tabIndex: number, value: number) {
+    return value === tabIndex
+  }
 
   function onTabClick(event: any, index: number) {
     setTabIndex(index)
