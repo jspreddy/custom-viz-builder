@@ -22,17 +22,29 @@ import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
 
 // This is the code that may change.
-import initJsCode from './data/init_code.js'
-let query = require('./data/query_response.json')
-let data = require('./data/raw_data.json')
+import initJsCode from './viz_dist/basic/init_code.js'
+let query = require('./viz_dist/basic/query_response.json')
+let data = require('./viz_dist/basic/raw_data.json')
 let DEPS = [
   'https://code.jquery.com/jquery-2.2.4.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js',
 ]
+
+
+
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 
 
 
@@ -53,7 +65,8 @@ const DevApp = () => {
   const [reloadViz, setReloadViz] = useState(true)
 
   return (
-    <>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
       <Grid container spacing={0}>
         <Grid
           item
@@ -117,7 +130,7 @@ const DevApp = () => {
           </div>
         </Grid>
       </Grid>
-    </>
+    </ThemeProvider>
   )
 
   /** Helper functions */
